@@ -8,21 +8,24 @@ use App\Http\Controllers\Controller;
 class GetBook extends Controller
 {
     /**
-     * Show the profile for the given user.
-     *
-     * @param  int  $id
-     * @return Response
+     * Affiche la liste des livres.
+     * @param  int 		$id
+     * @return View
      */
     public function liste()
     {
-        $select = DB::select('select * from book');
-        return view('get_list', ['livres' => $select]);
+        $books = DB::select('select * from book');
+        return view('get_list', ['book' => $books]);
     }
 
+	/**
+	 * Affiche un livre en fonction de son id
+	 * @param	int		$id
+	 * @return	View
+	 * */
     public function livre($id){
-
-            $livres = DB::select('select * from book where id = ?', [$id]);
-            return view('get_list', ['livres' => $livres]);
-        }
+		$book = DB::select('select * from book where id = ?', [$id]);
+		return view('get_list', ['book' => $book]);
+	}
 }
 
