@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::get('/books', 'GetBook@liste');
+
+Route::get('/books/{id}', 'GetBook@livre');

@@ -18,5 +18,11 @@ class GetBook extends Controller
         $select = DB::select('select * from book');
         return view('get_list', ['livres' => $select]);
     }
+
+    public function livre($id){
+
+            $livres = DB::select('select * from book where id = ?', [$id]);
+            return view('get_list', ['livres' => $livres]);
+        }
 }
 
